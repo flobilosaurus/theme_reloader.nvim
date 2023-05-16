@@ -2,27 +2,29 @@
 <p align="center">
 <img src="./assets/theme_reloader_icon.png" style="max-height: 10em"/>
 </p>
-Plugin to toggle the colorscheme in all currently opened Neovim instances.
+Plugin to toggle the colorscheme in all currently opened Neovim instances from everywhere.
 
----
-
-
-Video here
+https://github.com/flobilosaurus/theme_reloader.nvim/assets/36076146/4506af0e-2093-4702-b9d8-b221e9941a5b
 
 ---
 ## Installation
 
-lazy.nvim
+[lazy.nvim](https://github.com/folke/lazy.nvim)
 ```lua
-{
-	"flobilosaurus/theme_reloader.nvim",
-	config = true,
-}
+{ "flobilosaurus/theme_reloader.nvim" }
+```
+
+[packer.nvim](https://github.com/wbthomason/packer.nvim)
+```lua
+use { "flobilosaurus/theme_reloader.nvim" }
+```
+
+[vim-plug](https://github.com/junegunn/vim-plug)
+```vim
+Plug "flobilosaurus/theme_reloader.nvim"
 ```
 
 ## Options
-
-
 
 ```lua
 return {
