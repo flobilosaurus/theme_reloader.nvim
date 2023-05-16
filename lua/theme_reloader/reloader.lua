@@ -1,31 +1,37 @@
-local themeFile = vim.fn.expand("~/.config/nvim/theme")
+local utils = require("theme_reloader.utils")
+local theme_file = vim.fn.expand("~/.config/nvim/theme")
 
 local M = {}
 
 local function read_all(fileName)
-	local content = ""
+	local content = "dark"
 	local f = io.open(fileName, "rb")
 	if f then
 		content = f:read("*all")
 		f:close()
 	end
-	return content
+	return utils.trim(content)
+end
+
+local function get_theme()
+	return read_all(theme_file)
 end
 
 local function get_current_colorscheme(config)
-	local currentTheme = read_all(themeFile)
-	local light = string.find(currentTheme, "light")
+	local current_theme = get_theme()
+	vim.o.background = current_theme
+	local light = string.find(current_theme, "light")
 	local colorscheme = light and config.light or config.dark
 	return colorscheme
 end
 
-local function set_current_colorscheme(config)
+function M.set_current_colorscheme(config)
 	local colorscheme = get_current_colorscheme(config)
 	vim.cmd.colorscheme(colorscheme)
 end
 
 local function reload(config)
-	set_current_colorscheme(config)
+	M.set_current_colorscheme(config)
 end
 
 function M.attach(config)
@@ -45,11 +51,11 @@ function M.attach(config)
 		if w ~= nil then
 			w:stop()
 		end
-		watch_file(themeFile)
+		watch_file(theme_file)
 	end
 
 	-- reload vim config when background changes
-	watch_file(themeFile)
+	watch_file(theme_file)
 	reload(config)
 end
 
