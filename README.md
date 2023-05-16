@@ -27,15 +27,10 @@ Plug "flobilosaurus/theme_reloader.nvim"
 ## Options
 
 ```lua
-return {
-	"flobilosaurus/theme_reloader.nvim",
-	config = function()
-		require("theme_reloader").setup({
-			light = "catppuccin-latte",
-			dark = "catppuccin-mocha",
-		})
-	end,
-}
+require("theme_reloader").setup({
+  light = "catppuccin-latte",
+  dark = "catppuccin-mocha"
+})
 ```
 
 Make sure the used themes are available before `theme_reloader` plugin setup is run.
