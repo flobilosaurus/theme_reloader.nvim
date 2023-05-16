@@ -33,8 +33,6 @@ require("theme_reloader").setup({
 })
 ```
 
-Make sure the used themes are available before `theme_reloader` plugin setup is run.
-
 ---
 
 ## How to toggle themes
